@@ -26,7 +26,6 @@
           <button class="close-button" @click.stop="toggleUserMenu">&times;</button>
           <router-link class="bouton_menu" v-if="!isLoggedIn" to="/inscription" @click.native="toggleUserMenu">Inscription</router-link>
           <router-link class="bouton_menu2"  v-if="!isLoggedIn" to="/login" @click.native="toggleUserMenu">Connexion</router-link>
-          <router-link class="bouton_menu"  v-if="!isLoggedIn" to="/admin/login" @click.native="toggleUserMenu">Admin</router-link>
           <router-link class="bouton_menu" v-if="isLoggedIn" to="/mes-reservations" @click.native="toggleUserMenu">Mes Réservations</router-link>
           <button v-if="isLoggedIn" @click="logout" class="logout-button">Déconnexion</button>
         </div>
