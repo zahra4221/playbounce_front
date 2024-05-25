@@ -3,7 +3,7 @@
       <h1>Conditions Générales de Vente</h1>
       <h2>1. Introduction</h2>
       <p>
-        Ces conditions générales de vente s'appliquent de façon exclusive entre PlayBounce, ci-après « Nous » et toute personne effectuant une réservation via le site playbounce.fr, ci-après « le Client ».
+        Ces conditions générales de vente s'appliquent de façon exclusive entre Play Bounce, ci-après « Nous » et toute personne effectuant une réservation via le site https://playbounce.vercel.app, ci-après « le Client ».
       </p>
   
       <h2>2. Réservation et Annulation</h2>
@@ -13,7 +13,7 @@
   
       <h2>3. Obligations du Client</h2>
       <p>
-        Le Client s'engage à utiliser les installations de PlayBounce de manière responsable et conforme à leur destination. Il est tenu de respecter les règles spécifiques liées à l'utilisation des installations.
+        Le Client s'engage à utiliser les installations de Play Bounce de manière responsable et conforme à leur destination. Il est tenu de respecter les règles spécifiques liées à l'utilisation des installations.
       </p>
   
       <h2>4. Responsabilité</h2>
@@ -23,7 +23,7 @@
   
       <h2>5. Propriété intellectuelle</h2>
       <p>
-        Tous les éléments du site playbounce.fr sont et restent la propriété intellectuelle et exclusive de PlayBounce. Personne n'est autorisé à reproduire, exploiter, ou utiliser à quelque titre que ce soit, même partiellement, des éléments du site sans l'accord préalable écrit de PlayBounce.
+        Tous les éléments du site https://playbounce.vercel.app sont et restent la propriété intellectuelle et exclusive de Play Bounce. Personne n'est autorisé à reproduire, exploiter, ou utiliser à quelque titre que ce soit, même partiellement, des éléments du site sans l'accord préalable écrit de PlayBounce.
       </p>
   
       <h2>6. Données personnelles</h2>
