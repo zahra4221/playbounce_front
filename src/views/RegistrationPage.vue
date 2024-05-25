@@ -119,6 +119,12 @@ button {
 button:hover {
     background-color: #F83D3D;
 }
+@media (max-width: 768px) {
 
- 
+
+.inscription_button{
+    font-size: 0.9rem;
+    width:45%
+}
+}
 </style>

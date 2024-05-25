@@ -23,7 +23,7 @@
               placeholder="Entrez votre mot de passe"
             />
           </div>
-          <button type="submit">Connexion</button>
+          <button class="connexion_button" type="submit">Connexion</button>
         </form>
       </div>
     </div>
@@ -96,6 +96,8 @@
     transform: translate(-50%, -50%);
     width: 80%;
   }
+
+  .connexion_button{width:60%}
   
   .form-group {
     margin-bottom: 20px;
@@ -127,6 +129,21 @@
   
   button:hover {
     background-color: #0400ff;
+  }
+  @media (max-width: 768px) {
+    .form-group {
+    width: 100%;
+    max-width: 250px; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    margin: auto; 
+    margin-bottom: 20px;
+
+}
+
   }
   </style>
   
