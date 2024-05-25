@@ -23,7 +23,7 @@
                     <label for="password">Choisissez un mot de passe :</label>
                     <input class="input" type="password" id="password" v-model="password" required placeholder="Entrez votre mot de passe">
                 </div>
-                <button type="submit">Valider votre inscription</button>
+                <button class="inscription_button" type="submit">Valider votre inscription</button>
             </form>
         </div>
     </div>
@@ -78,6 +78,9 @@ const registerUser = async () => {
     padding-top: 20%;
 }
 
+.inscription_button{
+    width:50%
+}
 .form-container {
     position: absolute;
     top: 57%; 
@@ -116,4 +119,6 @@ button {
 button:hover {
     background-color: #F83D3D;
 }
+
+ 
 </style>

@@ -14,7 +14,7 @@
             <li class="border_nav match_score"><router-link to="/matchs" @click.native="closeMenuOnLinkClick">Matchs</router-link></li>
             <li class="border_nav general"><router-link to="/entrainement" @click.native="closeMenuOnLinkClick">Réservation</router-link></li>
             <li class="border_nav match_score"><router-link to="/scores" @click.native="closeMenuOnLinkClick">Scores</router-link></li>
-            <li class="border_nav general"><router-link to="/gallerie" @click.native="closeMenuOnLinkClick">Gallerie</router-link></li>
+            <li class="border_nav general"><router-link to="/gallerie" @click.native="closeMenuOnLinkClick">Galerie</router-link></li>
             <li class="border_nav general" v-if="isLoggedIn && isAdmin"><router-link to="/admin/dashboard" @click.native="closeMenuOnLinkClick">Dashboard</router-link></li>
             <li class="border_nav general" v-if="isLoggedIn && isAdmin"><router-link to="/admin/reservations" @click.native="closeMenuOnLinkClick">Terrains</router-link></li>
           </ul>
@@ -25,7 +25,8 @@
         <div v-if="userMenuOpen" class="user-dropdown">
           <button class="close-button" @click.stop="toggleUserMenu">&times;</button>
           <router-link class="bouton_menu" v-if="!isLoggedIn" to="/inscription" @click.native="toggleUserMenu">Inscription</router-link>
-          <router-link v-if="!isLoggedIn" to="/login" @click.native="toggleUserMenu">Connexion</router-link>
+          <router-link class="bouton_menu2"  v-if="!isLoggedIn" to="/login" @click.native="toggleUserMenu">Connexion</router-link>
+          <router-link class="bouton_menu"  v-if="!isLoggedIn" to="/admin/login" @click.native="toggleUserMenu">Admin</router-link>
           <router-link class="bouton_menu" v-if="isLoggedIn" to="/mes-reservations" @click.native="toggleUserMenu">Mes Réservations</router-link>
           <button v-if="isLoggedIn" @click="logout" class="logout-button">Déconnexion</button>
         </div>
@@ -214,6 +215,12 @@ function logout() {
   color: white; 
 }
 
+
+.bouton_menu2:hover,
+.bouton_menu2:hover {
+  background-color: #F83D3D;
+  color: white; 
+}
 
 .logout-button {
   color: #F83D3D;

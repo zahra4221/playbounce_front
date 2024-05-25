@@ -7,7 +7,7 @@
           <h2>Basketball Air</h2>
           <p>
             Découvrez le Basketball Air, une version dynamique et exaltante du basketball traditionnel.
-Sur ce terrain unique, des trampolines sont intégrés directement sous les paniers, permettant aux joueurs de toutes compétences de vivre l'excitation de réaliser des dunks spectaculaires.  Parfait pour les groupes d'amis, les fêtes ou les événements d'entreprise, rejoignez-nous pour une expérience de jeu sans pareil où la compétition amicale rencontre l'innovation sportive!
+Sur ce terrain unique, des trampolines sont intégrés directement sous les paniers, permettant aux joueurs de toutes compétences de vivre l'excitation de réaliser des dunks spectaculaires.  Parfait pour les groupes d'amis, les fêtes ou les événements d'entreprise!
 </p>
 
           <button class="reserve-button" @click="openReservationModal">Réserver</button>
@@ -21,8 +21,7 @@ Sur ce terrain unique, des trampolines sont intégrés directement sous les pani
         <div class="foot_text">
           <h2>Basketball</h2>
           <p>
-  Découvrez notre <strong>terrain de basketball intérieur</strong>, un espace conçu pour les amateurs et les professionnels. Équipé d'un sol en parquet haut de gamme, ce terrain offre un amorti optimal et une excellente réponse sous le pied, permettant des performances de jeu améliorées et une expérience utilisateur supérieure. Que vous cherchiez à organiser des tournois ou simplement à jouer entre amis, notre terrain intérieur est le lieu idéal pour montrer vos compétences tout au long de l'année, indépendamment des conditions météorologiques extérieures.
-</p>
+  Découvrez notre <strong>terrain de basketball intérieur</strong>, un espace conçu pour les amateurs et les professionnels. Équipé d'un sol en parquet haut de gamme, ce terrain offre un amorti optimal et une excellente réponse sous le pied, permettant des performances de jeu améliorées et une expérience utilisateur supérieure.</p>
           <button class="reserve-button" @click="openReservationModal">Réserver</button>
         </div>
         <img class="foot_pic_2" src="../assets/terrain2.1.png">
@@ -34,8 +33,7 @@ Sur ce terrain unique, des trampolines sont intégrés directement sous les pani
         <div class="foot_text">
           <h2>FootBall</h2>
           <p>
-  Plongez dans l'action sur notre <strong>terrain de football intérieur</strong>. Conçu avec un gazon artificiel de pointe, ce terrain simule parfaitement les conditions d'un terrain extérieur tout en offrant les avantages d'un espace couvert. Idéal pour les matchs en soirée ou les jours de pluie, il permet aux joueurs de profiter d'une surface de jeu constante et sûre. Organisez vos compétitions ou entraînements dans un environnement contrôlé où passion et sport se rencontrent pour créer une expérience inoubliable.
-</p>
+  Plongez dans l'action sur notre <strong>terrain de football intérieur</strong>. Conçu avec un gazon artificiel de pointe, ce terrain simule parfaitement les conditions d'un terrain extérieur tout en offrant les avantages d'un espace couvert. Idéal pour les matchs en soirée ou les jours de pluie, il permet aux joueurs de profiter d'une surface de jeu constante et sûre.</p>
           <button class="reserve-button" @click="openReservationModal">Réserver</button>
         </div>
         <img class="foot_pic_2" src="../assets/terrain3.1.png">
@@ -164,10 +162,12 @@ margin-bottom: 15%;
 
   .foot_pic {
     width: 100%;
+  
     position: absolute;
     top: 0;
     left: 0;
     z-index: 0;
+    opacity: 0.5;
   }
   
   .foot_text {
@@ -176,6 +176,7 @@ margin-bottom: 15%;
     align-content: center;
     align-items: center;
     padding: 5%;
+    opacity: 0.9;
     background-color: white;
     border-radius: 2%;
     margin-top: 5%;
@@ -209,11 +210,22 @@ margin-bottom: 15%;
   
   @media (max-width: 768px) {
     .foot_text p {
-      font-size:0.5rem;
+      font-size:0.8rem;
+    }
+
+    .foot_pic{
+      opacity: 1;
+
+    }
+    .foot_text{
+      width:80%;
     }
     .foot_text h2 {
       font-size: 14px;
     }
+    .foot_pic_2 {
+  display: none; /* Masquer les images sur mobile */
+}
   }
   
   .reserve-button {
