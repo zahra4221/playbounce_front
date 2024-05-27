@@ -35,7 +35,7 @@ const fetchMatchs = async () => {
 };
 
 const getLogoUrl = (logoPath) => {
-  return `$import.meta.env.VITE_APP_URL}/${logoPath}`;
+  return `${import.meta.env.VITE_APP_URL}/${logoPath}`;
 };
 
 onMounted(fetchMatchs);
