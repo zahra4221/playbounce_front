@@ -50,7 +50,6 @@
   </template>
   
   <script setup>
-  // Component logic can be added here if needed
   </script>
   
   <style scoped>

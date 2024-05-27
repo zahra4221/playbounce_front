@@ -20,10 +20,6 @@ position: relative;
 width: 100%; 
 }
 
-
-
-
-
   .first_pic {
 width: 100%;
 }

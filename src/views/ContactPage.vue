@@ -38,9 +38,6 @@ import {  ref } from 'vue';
 
 
 function redirectToHome() {
-  // Utilisez router.push si vous utilisez Vue Router
-  // router.push('/');
-  // Sinon utilisez window.location pour rediriger
   window.location.href = '/';
 }
 const prenom = ref('');

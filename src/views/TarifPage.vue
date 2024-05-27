@@ -59,15 +59,15 @@
 
 
 .price-entry {
-  color: #F83D3D; /* Rouge pour À l'entrée */
+  color: #F83D3D; 
 }
 
 .price-monthly {
-  color: #3DCBF8; /* Bleu pour Mensuel */
+  color: #3DCBF8; 
 }
 
 .price-annual {
-  color: #9FCD3B; /* Vert pour Annuel */
+  color: #9FCD3B;
 }
 
   
@@ -91,7 +91,7 @@
   }
   
   .pricing-card {
-    background: rgba(0, 0, 0, 0.8); /* More contrast for readability */
+    background: rgba(0, 0, 0, 0.8); 
     border-radius: 15px;
     padding: 1rem;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);

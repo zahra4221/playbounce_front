@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import HomeView from '../views/HomePageView.vue';
-import GalleryPage from '../views/GalleryPage.vue';
+import HomeView from '../views/HomePage.vue';
+import GaleriePage from '../views/GaleriePage.vue';
  import MatchsPage from '@/views/MatchsPage.vue';
 import LoginPage from '@/views/LoginPage.vue';
  import RegistrationPage from '@/views/RegistrationPage.vue';
@@ -9,7 +9,7 @@ import LoginPage from '@/views/LoginPage.vue';
 import ScoresPage from '@/views/ScoresPage.vue';
 import EntrainementPage from '@/views/EntrainementPage.vue';
 import AdminReservations from '@/views/AdminReservations.vue';
- import EventsPage from '@/views/EventsPage.vue';
+ import EvenementsPage from '@/views/EvenementPage.vue';
  import ReservationBoard from '@/views/ReservationsBoard.vue'
  import MesReservations from '@/views/MesReservations.vue'
 import ContactForm from '@/views/ContactPage.vue'
@@ -55,7 +55,7 @@ const router = createRouter({
     {
        path: '/evenements',
       name: 'evenments',
-      component: EventsPage
+      component: EvenementsPage
      },
      {
       path: '/entrainement',
@@ -67,12 +67,7 @@ const router = createRouter({
        name: 'AdminLogin',
        component: AdminLogin
      },
-     {
-       path: '/admin/dashboard',
-   name: 'AdminDashboard',
-       component: AdminDashboard,
-       meta: { requiresAuth: true, isAdmin: true }
-     },
+    
      {
       path: '/mes-reservations',
        name: 'mesreservations',
@@ -85,9 +80,9 @@ const router = createRouter({
        meta: { requiresAuth: true, isAdmin: true }
      },
      {
-     path: '/gallerie',
-       name: 'GalleryPage',
-      component: GalleryPage
+     path: '/galerie',
+       name: 'Galerie',
+      component: GaleriePage
      },
      {
        path: '/matchs',
@@ -116,6 +111,12 @@ const router = createRouter({
        component: AdminReservations,
        meta: { requiresAuth: true, isAdmin: true }, 
      },
+     {
+      path: '/admin/dashboard',
+  name: 'AdminDashboard',
+      component: AdminDashboard,
+      meta: { requiresAuth: true, isAdmin: true }
+    },
   ]
 });
 

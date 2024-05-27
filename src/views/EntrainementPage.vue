@@ -211,6 +211,7 @@ margin-bottom: 15%;
   @media (max-width: 768px) {
     .foot_text p {
       font-size:0.8rem;
+      font-weight: 400;
     }
 
     .foot_pic{
@@ -224,7 +225,7 @@ margin-bottom: 15%;
       font-size: 14px;
     }
     .foot_pic_2 {
-  display: none; /* Masquer les images sur mobile */
+  display: none; 
 }
   }
   

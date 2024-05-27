@@ -139,7 +139,6 @@ onMounted(fetchMatchs);
 </script>
 
 <style scoped>
-/* Stylez votre composant comme vous le faisiez auparavant */
 .container {
   text-align: center;
   background: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), url('../assets/match_back.png');

@@ -14,7 +14,7 @@
             <li class="border_nav match_score"><router-link to="/matchs" @click.native="closeMenuOnLinkClick">Matchs</router-link></li>
             <li class="border_nav general"><router-link to="/entrainement" @click.native="closeMenuOnLinkClick">Réservation</router-link></li>
             <li class="border_nav match_score"><router-link to="/scores" @click.native="closeMenuOnLinkClick">Scores</router-link></li>
-            <li class="border_nav general"><router-link to="/gallerie" @click.native="closeMenuOnLinkClick">Galerie</router-link></li>
+            <li class="border_nav general"><router-link to="/galerie" @click.native="closeMenuOnLinkClick">Galerie</router-link></li>
             <li class="border_nav general" v-if="isLoggedIn && isAdmin"><router-link to="/admin/dashboard" @click.native="closeMenuOnLinkClick">Dashboard</router-link></li>
             <li class="border_nav general" v-if="isLoggedIn && isAdmin"><router-link to="/admin/reservations" @click.native="closeMenuOnLinkClick">Terrains</router-link></li>
           </ul>
@@ -153,21 +153,20 @@ function logout() {
   bottom: 0;
   width: 100%;
   height: 2px;
-  background-color: transparent; /* Initialement transparent */
-  transition: background-color 0.3s ease; /* Transition pour l'effet au survol */
+  background-color: transparent; 
+  transition: background-color 0.3s ease; 
 }
 
 .page-content nav ul li:nth-child(odd) a::after {
-  background-color: #F83D3D; /* Couleur de fond rouge permanent */
+  background-color: #F83D3D; 
 }
 
 .page-content nav ul li:nth-child(even) a::after {
-  background-color: #3DCBF8; /* Couleur de fond bleu permanent */
+  background-color: #3DCBF8; 
 }
 @media (max-width: 768px) {
-  /* Supprime les décorations sous les liens pour les appareils mobiles */
   .page-content nav ul li a::after {
-    background-color: transparent !important; /* Force la transparence sur mobile */
+    background-color: transparent !important; 
   }}
 .user-menu {
   position: relative;

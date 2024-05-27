@@ -29,3 +29,7 @@ coverage
 
 *.tsbuildinfo
 .env
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
