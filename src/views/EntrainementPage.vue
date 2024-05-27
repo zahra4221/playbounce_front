@@ -210,7 +210,7 @@ margin-bottom: 15%;
   
   @media (max-width: 768px) {
     .foot_text p {
-      font-size:0.8rem;
+      font-size:0.7rem;
       font-weight: 400;
     }
 
@@ -219,7 +219,7 @@ margin-bottom: 15%;
 
     }
     .foot_text{
-      width:80%;
+      width:100%;
     }
     .foot_text h2 {
       font-size: 14px;

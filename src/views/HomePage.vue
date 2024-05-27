@@ -63,7 +63,9 @@ z-index: 2;
   .logo-container {
 
 height: 15vh;
-}     
+}    
+
+
 
 .container2 {
 position: relative; 
@@ -75,7 +77,7 @@ position: absolute;
 top: 82%; 
 transform: translate(-50%, -50%);
 font-size: 0.7rem; 
-font-weight: 600;
+font-weight: 400;
 width: 50%; 
 max-width: 300px; 
 padding: 15px; 
