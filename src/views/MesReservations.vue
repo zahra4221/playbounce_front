@@ -30,34 +30,52 @@
     </section>
   </div>
 </template>
-
 <script setup>
 import { ref, onMounted } from 'vue';
-import axios from 'axios';
 
 const trainingReservations = ref([]);
 const matchReservations = ref([]);
 
 const fetchUserReservations = async () => {
-try {
-  const token = localStorage.getItem('token');
+  try {
+    const token = localStorage.getItem('token');
 
-  const trainingResponse = await axios.get(`${import.meta.env.VITE_APP_URL}/api/trainingReservations/user`, {
-    headers: { Authorization: `Bearer ${token}` }
-  });
-  trainingReservations.value = trainingResponse.data;
+    const trainingResponse = await fetch(`${import.meta.env.VITE_APP_URL}/api/trainingReservations/user`, {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
+    });
 
-  const matchResponse = await axios.get(`${import.meta.env.VITE_APP_URL}/api/matchs/reservations/user`, {
-    headers: { Authorization: `Bearer ${token}` }
-  });
-  matchReservations.value = matchResponse.data;
-} catch (error) {
-  console.error('Erreur lors de la récupération des réservations :', error);
-}
+    if (!trainingResponse.ok) {
+      throw new Error('Network response was not ok for training reservations');
+    }
+    const trainingData = await trainingResponse.json();
+    trainingReservations.value = trainingData;
+
+    const matchResponse = await fetch(`${import.meta.env.VITE_APP_URL}/api/matchs/reservations/user`, {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
+    });
+
+    if (!matchResponse.ok) {
+      throw new Error('Network response was not ok for match reservations');
+    }
+    const matchData = await matchResponse.json();
+    matchReservations.value = matchData;
+    
+  } catch (error) {
+    console.error('Erreur lors de la récupération des réservations :', error);
+  }
 };
 
 onMounted(fetchUserReservations);
 </script>
+
 
 <style scoped>
 .user-reservations {

@@ -38,43 +38,59 @@
     </div>
   </div>
 </template>
-
 <script setup>
 import { ref, onMounted } from 'vue';
-import axios from 'axios';
 
 const matchs = ref([]);
-const trainingReservations = ref([]);
+const trainingSessions = ref([]);
 
 const fetchReservations = async () => {
   try {
-    const response = await axios.get(`${import.meta.env.VITE_APP_URL}/api/matchs`);
-    matchs.value = response.data;
+    const response = await fetch(`${import.meta.env.VITE_APP_URL}/api/matchs`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error('Network response was not ok for match reservations');
+    }
+
+    const data = await response.json();
+    matchs.value = data;
   } catch (error) {
     console.error('Erreur lors de la récupération des réservations :', error);
   }
 };
-const trainingSessions = ref([]);
 
 const fetchTrainingSessions = async () => {
   try {
-    const response = await axios.get(`${import.meta.env.VITE_APP_URL}/api/trainingReservations`, {
+    const response = await fetch(`${import.meta.env.VITE_APP_URL}/api/trainingReservations`, {
+      method: 'GET',
       headers: {
-        Authorization: `Bearer ${localStorage.getItem('token')}`
-      }
+        'Authorization': `Bearer ${localStorage.getItem('token')}`,
+        'Content-Type': 'application/json',
+      },
     });
-    trainingSessions.value = response.data;
+
+    if (!response.ok) {
+      throw new Error('Network response was not ok for training sessions');
+    }
+
+    const data = await response.json();
+    trainingSessions.value = data;
   } catch (error) {
     console.error('Erreur lors de la récupération des entraînements :', error);
   }
 };
 
-onMounted(fetchTrainingSessions);
-
 onMounted(() => {
   fetchReservations();
+  fetchTrainingSessions();
 });
 </script>
+
 <style scoped>
 .reservations-dashboard {
   padding: 2rem;

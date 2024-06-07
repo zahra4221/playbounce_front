@@ -6,21 +6,21 @@
 
     <div v-if="matchs.length === 0">Aucun match disponible.</div>
     <div v-else>
-      <div v-for="match in matchs" :key="match._id">
+      <div v-for="(match, index) in matchs" :key="match._id" :class="`match-container match-container-${index % 2}`">
         <div class="match">
-        <p class="match-date">Date: {{ new Date(match.date).toLocaleString() }} - {{ match.sport }}</p>
+          <p class="match-date">Date: {{ new Date(match.date).toLocaleString() }} - {{ match.sport }}</p>
 
-        <div class="team-logos">
-          <img :src="getLogoUrl(match.team1Logo)" alt="Logo Équipe 1" class="team-logo">
-          <span>VS</span>
-          <img :src="getLogoUrl(match.team2Logo)" alt="Logo Équipe 2" class="team-logo">
+          <div class="team-logos">
+            <img :src="getLogoUrl(match.team1Logo)" alt="Logo Équipe 1" class="team-logo">
+            <span>VS</span>
+            <img :src="getLogoUrl(match.team2Logo)" alt="Logo Équipe 2" class="team-logo">
+          </div>
+          <div class="scores">
+            <span>{{ match.team1 }}</span>
+            <span>{{ match.team2 }}</span>
+          </div>
+          <button class="button_basket" @click="openReservationModal(match)">Réserver ce match</button>
         </div>
-        <div class="scores">
-          <span>{{ match.team1 }}</span>
-          <span>{{ match.team2 }}</span>
-        </div>
-        <button class="button_basket" @click="openReservationModal(match)">Réserver ce match</button>
-      </div>
       </div>
     </div>
 
@@ -55,9 +55,9 @@
   </div>
 </template>
 
+
 <script setup>
 import { ref, onMounted, watch, computed } from 'vue';
-import axios from 'axios';
 import { useRouter } from 'vue-router';
 
 const matchs = ref([]);
@@ -71,12 +71,24 @@ const reservationError = ref('');
 
 const fetchMatchs = async () => {
   try {
-    const response = await axios.get(`${import.meta.env.VITE_APP_URL}/api/matchs`);
-    matchs.value = response.data;
+    const response = await fetch(`${import.meta.env.VITE_APP_URL}/api/matchs`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error('Network erreur');
+    }
+
+    const data = await response.json();
+    matchs.value = data;
   } catch (error) {
     console.error('Erreur lors de la récupération des événements :', error);
   }
 };
+
 
 const openReservationModal = (match) => {
   const token = localStorage.getItem('token');
@@ -112,32 +124,42 @@ watch(numPeople, (newNumPeople) => {
 const totalCost = computed(() => {
   return numPeople.value * pricePerPerson;
 });
-
 const reserveMatch = async () => {
   const token = localStorage.getItem('token');
   if (!token) {
     router.push({ name: 'login' });
   } else {
     try {
-      const response = await axios.post(`${import.meta.env.VITE_APP_URL}/api/reserve/${selectedMatch.value._id}`, {
-        numPeople: numPeople.value,
-        people: people.value
-      }, {
-        headers: { Authorization: `Bearer ${token}` }
+      const response = await fetch(`${import.meta.env.VITE_APP_URL}/api/reserve/${selectedMatch.value._id}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify({
+          numPeople: numPeople.value,
+          people: people.value
+        })
       });
-      console.log('Réservation réussie:', response.data);
+
+      if (!response.ok) {
+        throw new Error(await response.text());
+      }
+
+      const data = await response.json();
+      console.log('Réservation réussie:', data);
       alert('Réservation réussie !');
       closeReservationModal();
     } catch (error) {
-      console.error('Erreur lors de la réservation :', error.response ? error.response.data : error.message);
-      reservationError.value = error.response ? error.response.data.message : 'Erreur lors de la réservation, veuillez réessayer.';
+      console.error('Erreur lors de la réservation :', error.message);
+      reservationError.value = error.message.includes('Erreur') ? error.message : 'Erreur lors de la réservation, veuillez réessayer.';
     }
   }
 };
 
+
 onMounted(fetchMatchs);
 </script>
-
 <style scoped>
 .container {
   text-align: center;
@@ -145,7 +167,6 @@ onMounted(fetchMatchs);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  height: 300vh;
   padding-top: 10%;
 }
 
@@ -167,8 +188,13 @@ onMounted(fetchMatchs);
 .scores span {
   font-size: 1.5rem;
 }
+
 .first_pic {
   width: 100%;
+}
+
+.match-container {
+  margin-bottom: 20px;
 }
 
 .match {
@@ -179,6 +205,20 @@ onMounted(fetchMatchs);
   padding: 2%;
   color: white;
   background-color: rgba(0, 0, 0, 0.62); 
+}
+
+.match-container-0 .match {
+  background: linear-gradient(rgba(0, 0, 0, 0.62), rgba(0, 0, 0, 0.62)), url('../assets/match_back1.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.match-container-1 .match {
+  background: linear-gradient(rgba(0, 0, 0, 0.62), rgba(0, 0, 0, 0.62)), url('../assets/match_back2.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .team-logos {

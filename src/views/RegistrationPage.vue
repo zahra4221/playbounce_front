@@ -28,10 +28,8 @@
         </div>
     </div>
 </template>
-
 <script setup>
 import { ref } from 'vue';
-import axios from 'axios';
 
 const firstName = ref('');
 const lastName = ref('');
@@ -40,21 +38,34 @@ const email = ref('');
 const password = ref('');
 
 const registerUser = async () => {
-    try {
-        const response = await axios.post(`${import.meta.env.VITE_APP_URL}/api/auth/signup`, {
-            firstName: firstName.value,
-            lastName: lastName.value,
-            birthDate: birthDate.value,
-            email: email.value,
-            password: password.value,
-        });
-        alert('Inscription réussie !');
-    } catch (error) {
-        console.error('Erreur lors de l\'inscription:', error.response.data);
-        alert('Erreur lors de l\'inscription, veuillez réessayer.');
+  try {
+    const response = await fetch(`${import.meta.env.VITE_APP_URL}/api/auth/signup`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        firstName: firstName.value,
+        lastName: lastName.value,
+        birthDate: birthDate.value,
+        email: email.value,
+        password: password.value,
+      }),
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(errorData.message || 'Erreur lors de l\'inscription');
     }
+
+    alert('Inscription réussie !');
+  } catch (error) {
+    console.error('Erreur lors de l\'inscription:', error.message);
+    alert('Erreur lors de l\'inscription, veuillez réessayer.');
+  }
 };
 </script>
+
 
 <style scoped>
 .container {
