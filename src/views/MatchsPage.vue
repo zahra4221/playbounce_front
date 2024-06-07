@@ -168,6 +168,8 @@ onMounted(fetchMatchs);
   background-position: center;
   background-repeat: no-repeat;
   padding-top: 10%;
+  min-height: 100vh;
+
 }
 
 .titre_basket h2 {
