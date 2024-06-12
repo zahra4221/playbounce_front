@@ -168,7 +168,7 @@ onMounted(fetchMatchs);
   background-position: center;
   background-repeat: no-repeat;
   padding-top: 10%;
-  min-height: 100vh;
+  min-height: 150vh;
 
 }
 
